@@ -61,7 +61,7 @@ class DeliveryApiKey extends ApiKey implements CreatableInterface
             unset($body['environments']);
         }
 
-        return json_encode((object) $body, \JSON_UNESCAPED_UNICODE);
+        return \GuzzleHttp\Utils::jsonEncode((object) $body, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
     }
 
     public function asUriParameters(): array

@@ -15,8 +15,6 @@ use Contentful\Core\Api\Link;
 use Contentful\Core\Resource\SystemPropertiesInterface;
 use Contentful\Management\Client;
 
-use function GuzzleHttp\json_encode as guzzle_json_encode;
-
 /**
  * BaseResource class.
  */
@@ -53,7 +51,7 @@ abstract class BaseResource implements ResourceInterface
 
         unset($body['sys']);
 
-        return guzzle_json_encode((object) $body, \JSON_UNESCAPED_UNICODE);
+        return \GuzzleHttp\Utils::jsonEncode((object) $body, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
     }
 
     /**

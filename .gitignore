@@ -8,3 +8,6 @@
 /tools
 /php-cs-fixer.phar
 /.phpunit.result.cache
+/.idea
+/dev-scripts
+/*.code-workspace

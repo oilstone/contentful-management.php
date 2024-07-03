@@ -17,8 +17,6 @@ use Contentful\Management\Resource\Behavior\DeletableTrait;
 use Contentful\Management\Resource\Behavior\UpdatableTrait;
 use Contentful\Management\SystemProperties\Space as SystemProperties;
 
-use function GuzzleHttp\json_encode as guzzle_json_encode;
-
 /**
  * Space class.
  *
@@ -86,7 +84,7 @@ class Space extends BaseResource implements CreatableInterface
             $body['defaultLocale'] = $this->defaultLocale;
         }
 
-        return guzzle_json_encode((object) $body, \JSON_UNESCAPED_UNICODE);
+        return \GuzzleHttp\Utils::jsonEncode((object) $body, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
     }
 
     public function asUriParameters(): array
